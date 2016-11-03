@@ -1,0 +1,442 @@
+Description/Requirements: 
+This is a program that will do what would happen at a bank. The program should be able to manage, update, and check the account. The user will be asked for the customer information and what the account number is. It was do the work based on the information the user provides. The user should be able to add, accounts, change the amount in the balance, check the accounts, look up customers, and change customer information.
+
+/****************************************************************************************************************************************
+
+USE CASES:
+
+1)  An elderly indicidual may want to make a deposit or a withdrawl.
+2)  An elderly individual may want to check their account balance.
+3)  An elderly individual may want to look up their information (account type, account number, etc).
+4)  An elderly individual may want to make and proccess a transaction.
+5)  A student may want to check their account balance.
+6)  A student may want to make a deposit or a withdrawl.
+7)  A student may want to look up information on their account.
+8)  An adult may want to make a deposit or withdrawl.
+9)  An adult may want to check their account balance.
+10) An adult may want to make and process a transaction.
+
+****************************************************************************************************************************************/
+
+
+Class Account
+
+ members:
+  -Customer *Customer
+  -double balance
+  -int account_number
+  -std::vector<Transaction *> transactions;
+
+
+ methods:
+
+
+  Name: get_balance()
+  Desc: Gets the balance for the user.
+  Param: int account_number
+  Return: Void
+ 
+   1) The program will print out the balance for the user based on the account number sent in.
+
+
+  Name: get_customer()
+  Desc: The program will get the customer.
+  Params: None
+  Return: Customer
+
+   1) return customer;
+
+
+  Name: to_string()
+  Desc: Converts customer information to a string to be printed out.
+  Params: None
+  Return: String
+
+   1) Declare std::stringstream ss.
+   2) Store Balance in ss.
+   3) Store account number in ss.
+   4) return ss.str();
+
+
+  Name: set_customer()
+  Desc: Sets the customer to the parameter.
+  Params: Customer *cust
+  Return: Void
+
+   1) Sets customer to cust.
+
+
+  Name: set_balance()
+  Desc: Resets the balance to a new balance.
+  Params: double new_balance
+  Return: Void
+
+   1) Sets balance to new_balance.
+
+
+
+Class Savings_Account : Account
+//Inherits from Account
+
+ methods:
+
+
+  Name: deposit()
+  Desc: Deposits an amount of money into the balance.
+  Params: double dep
+  Return: void
+
+   1) Adds the deposit amount to the balance.
+   2) Ask the user if they would like to see the account balance.
+   3) If the user would like to see the account balance, call get_balance().
+
+
+  Name: withdraw()
+  Desc: Withdraws an amount of money from the balance.
+  Params: double withdraw
+  Return: Void
+
+   1) Subtracts the amount to be taken from the balance.
+   2) If the withdraw amount is too large, do not proceed.
+   3) Print out a message to the user saying that there is not enough money in the account.
+   4) Ask the user if they would like to see the account balance.
+   5) If the user says yes, print out the balance.
+
+
+  Name: add_interest()
+  Desc: Returns a bumber to be added as interest to the account.
+  Params: None
+  Return: double interest
+
+   1) Determine the amount of interest you would like the use.
+   2) Apply that amount of interest based on the account set up.
+   3) Determine the amount to be added based on the percentage.
+   4) Return the amount to be added.
+
+
+
+Class Checking_Account : Account
+
+methods:
+ 
+
+  Name: deposit()
+  Desc: Deposits an amount of money into the balance.
+  Params: double dep
+  Return: void
+
+   1) Adds the deposit amount to the balance.
+   2) Ask the user if they would like to see the account balance.
+   3) If the user would like to see the account balance, call get_balance().
+
+
+  Name: withdraw()
+  Desc: Withdraws an amount of money from the balance.
+  Params: double withdraw
+  Return: Void
+
+   1) Subtracts the amount to be taken from the balance.
+   2) If the withdraw amount is too large, do not proceed.
+   3) Print out a message to the user saying that there is not enough money in the account.
+   4) Ask the user if they would like to see the account balance.
+   5) If the user says yes, print out the balance.
+
+
+  Name: add_interest()
+  Desc: Returns a bumber to be added as interest to the account.
+  Params: None
+  Return: double interest
+
+   1) Determine the amount of interest you would like the use based on the type of customer
+   2) Apply that amount of interest based on the account set up.
+   3) Determine the amount to be added based on the percentage.
+   4) Return the amount to be added.
+
+
+
+Class Customer
+
+
+members: 
+ -name
+ -address
+ -age
+ -telephone_number
+ -customer_number
+
+
+methods:
+
+
+  Name: get_name()
+  Desc: Returns the name of the customer.
+  Params: None
+  Return: String
+
+   1) Returns the customers name.
+
+
+  Name: set_name()
+  Desc: Sets the customers name.
+  Params: String name
+  Return: Void
+
+   1) Sets name to the parameter name.
+
+
+  Name: get_address()
+  Desc: Returns the address of the customer.
+  Params: None
+  Return: String address
+
+   1) Returns the customers address.
+
+
+  Name: set_address()
+  Desc: Sets the customers address.
+  Params: String address
+  Return: Void
+
+  1) Sets address to the parameter address.
+
+
+  Name: get_age()
+  Desc: Returns the customers age.
+  Params: None
+  Return: int age
+
+   1) Returns the customers age.
+
+
+  Name: set_age()
+  Desc: Sets the customers age.
+  Params: int age
+  Return: Void
+
+   1) Sets age to the parameter age  
+
+
+  Name: get_telephone_number()
+  Desc: Returns the customers telephone number.
+  Params: None
+  Return: String telephone_number
+
+   1) Returns the customers telephone number.
+
+
+  Name: set_telephone_number()
+  Desc: Sets the customers telephone number.
+  Params: String telephone_number.
+  Return: Void
+
+   1) Sets the customers telephone number to the parameter telephone number.
+
+
+  Name: get_customer_number()
+  Desc: Returns the customers number.
+  Params: None
+  Return: String Customer_number
+
+   1) Returns the customers number.
+
+
+  Name: set_customer_number()
+  Desc: Sets the customer number.
+  Params: String customer_number.
+  Return: Void
+
+   1) Sets the customer number to the parameter number.
+
+
+
+Class Senior : Customer
+
+Constant:
+
+ -SAVINGS_INTEREST
+ -CHECK_INTEREST
+ -CHECK_CHARGE
+ -OVERDRAFT_PENALTY
+
+
+Class Adult : Customer
+
+Constant:
+
+ -SAVINGS_INTEREST
+ -CHECK_INTEREST
+ -CHECK_CHARGE
+ -OVERDRAFT_PENALTY
+
+
+Class Student : Customer
+
+Constant:
+
+ -SAVINGS_INTEREST
+ -CHECK_INTEREST
+ -CHECK_CHARGE
+ -OVERDRAFT_PENALTY
+
+
+
+Class Bank
+
+
+members:
+ -std::vector<Account *> accounts; 
+ -std::vector<Customer *> customers;  
+ -int account_id;     
+ -int customer_id;
+
+
+methods:
+
+
+  Name: add_account()
+  Desc: Adds an account from the parameters.
+  Params: Customer *cust, std::string account_type
+  Returns: Account account
+
+   1) Create an account based on the information sent in through the parameters.
+   2) Return the account.
+
+
+  Name: add_account()
+  Desc: Adds an account from the parameters.
+  Params: std::string name, std::string account_type
+  Return: Account account
+
+   1) Set up an account based on the parameters.
+   2) Look up the customer based on the name parameter, store it in cust.
+   3) If the customer == NULL, return NULL.
+   4) Return add_account(cust, account_type)
+   5) If the account type is a savings, set up a savings account.
+   6) Else set up a checking account.
+   7) Return the account.
+
+
+  Name: add_account()
+  Desc: Adds an account based on the parameters.
+  Params: std::string name, std::string address, std::string telephone, int age, std::string cust_type, std::string account_type
+  Returns: Account account
+
+   1) Create a customer based on the type sent in in the parameters.
+   2) Call push back on the customers vector sending in the customer created in this function.
+   3) Return add_account(cust, account_type).
+
+
+  Name: make_deposit()
+  Desc: Makes a deposit based on the given account.
+  Params: int acct_number, double amt
+  Return: Void
+
+   1) Create an account using the get_account function, then check the account.
+   2) If account, call the Accounts deposit function.
+
+
+  Name: make_withdrawl()
+  Desc: Makes a withdrawl based on the given account.
+  Params: int acct_number, double amt
+  Return: Void
+
+   1) If the account exists, call the withdraw function in Account.
+
+
+  Name: get_account()
+  Desc: Takes an account number and calls the get_account function on it.
+  Params: int acct_number 
+  Return: Account account
+
+   1) While less than the total number of accounts, do steps 2-3.
+   2) Search through the accounts and check to see if any of them are equal to the account number.
+   3) If the number is the same, return that specific account.
+   4) Return NULL.
+
+
+
+Class Transaction
+
+
+members:
+ -std::string customer_number;
+ -std::string transaction_type;
+ -double amount;
+ -std::string fees;
+
+
+methods:
+
+  Name: process_tran()
+  Desc: Proccesses the transaction.
+  Params: None
+  Returns: String
+
+   1) Delcare a stringstream called ss.
+   2) Store the transaction type, amount, and fees into ss.
+   3) Return ss.str().
+
+
+
+Banking_Application.cpp
+
+
+  Name: Add_Account()
+  Desc: Creates an account based on the information the user enters.
+  Params: Bank &bank
+  Returns: Void
+
+   1)  Asks the user for their name.
+   2)  Prompt to enter name.
+   3)  Asks the user for the type of account.
+   4)  User is prompted to enter account type, response is read in.
+   5)  If user enters '0' account type is "savings".
+   6)  Else the account type is "checking".
+   7)  Try to add the account.
+   8)  If the account == NULL do steps 9-18.
+   9)  State that the user is a new customer, and ask for address.
+   10) User enters address.
+   11) Ask the user for their telephone number.
+   12) User prompted to enter their telephone number, response read in.
+   13) User is prompeted to enter their age, response is read in.
+   14) Asks the user for their customer type.
+   15) Promt user to enter, response is read in.
+   16) If the user enter '0', set customer type to "Adult".
+   17) Else If the user enter '1', set customer type to "Senior".
+   18) Else set the customer type to "Student".
+   19) If acct, print out the ID number and set call get_account.
+   20) Else print out that the account creation failed.
+
+
+
+  Name: make_deposit()
+  Desc: Prompts the user for their information and makes a deposit based on the entered information.
+  Params: Bank &bank
+  Returns: Void
+
+   1) Ask the user for their account ID number.
+   2) Promt user to enter, read in response.
+   3) Ask the user for the amount to be added.
+   4) Prompt user to enter, read in response.
+   5) Call make_deposit from bank.
+
+
+  Name: Make_Withdrawl()
+  Desc: Promts the user for their information and makes a witchdrawl based on the entered information.
+  Params: Bank &bank
+  Return: Void
+
+   1) Ask the user for their account ID number.
+   2) Promt user to enter, read in response.
+   3) Ask the user for the amount to be withdrawn.
+   4) Prompt user to enter, read in response.
+   5) Call make_witchdrawl from bank.
+   
+
+
+
+#5) Bank Data Storage Description:
+
+     -The program will be randomly generate numbers to ensure that each number is different. They will be stored in account_id and
+      customer_id. Each customer will have their own section in a vector, and will have their own associated account and customer number.      Based on the information in the program I would say that the transactions will be linked to the customer based on the account and
+      customer numbers.
